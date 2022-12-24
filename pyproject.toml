@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "qrcodescanner"
+version = "0.1.0"
+description = ""
+authors = ["alejlatorre <alejandro.latorre@pucp.edu.pe>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+numpy = "^1.24.0"
+pre-commit = "^2.20.0"
+ipykernel = "^6.19.4"
+notebook = "^6.5.2"
+black = "^22.12.0"
+matplotlib = "2.2.4"
+opencv-python = "4.5.5.64"
+
+[tool.black]
+line-length = 88
+skip-string-normalization = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

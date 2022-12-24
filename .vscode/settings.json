@@ -1,0 +1,14 @@
+{
+  "python.defaultInterpreterPath": "./.venv/bin/python",
+  "editor.defaultFormatter": null,
+  "editor.formatOnSave": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["-l 88", "--skip-string-normalization"],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "[python]": {
+    "editor.formatOnSaveMode": "file",
+    "editor.formatOnPaste": false
+  }
+}
