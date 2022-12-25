@@ -5,9 +5,10 @@ Created on Sun Dec 25 15:59:18 2022
 """
 
 import pickle
+from typing import List
 
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
 
 app = FastAPI()
 
@@ -31,9 +32,19 @@ def qr_extraction(filename):
     return {'text': qr_text}
 
 
+# Get qr code
+@app.post('/img')
+async def upload_image(files: List[UploadFile] = File(...)):
+    for img in files:
+        image = qrcs.read_image(img.filename)
+        qr_text = qrcs.extract_info(img=image)
+    return {'text': qr_text}
+
+
 # Run the API with uvicorn
 if __name__ == '__main__':
     uvicorn.run(app, host='127.0.0.1', port=8000)
 
 # uvicorn main:app --reload
 # sudo lsof -t -i tcp:8000 | xargs kill -9
+# https://www.youtube.com/watch?v=kVoZ5CZRy4A
