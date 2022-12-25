@@ -73,10 +73,10 @@ echo 'Have you already installed VcXsrv? (y or n)'
 echo '##########################################################'
 read answer
 if [[ $answer =~ ^[Yy]$ ]]; then
-    echo 'Please install VcXsrv with the following instructions: PATH TO README.md'
-else
     echo 'Dynamically exporting the DISPLAY enviroment variable in WSL2...'
     echo "export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0" >>~/.bashrc
     echo 'export QT_DEBUG_PLUGINS=1' >>~/.bashrc
     echo 'echo $DISPLAY'
+else
+    echo 'Please install VcXsrv with the following instructions: PATH TO README.md'
 fi
