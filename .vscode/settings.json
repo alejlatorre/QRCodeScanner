@@ -4,6 +4,10 @@
   "editor.formatOnSave": true,
   "python.formatting.provider": "black",
   "python.formatting.blackArgs": ["-l 88", "--skip-string-normalization"],
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintPath": "${workspaceFolder}",
+  "python.linting.lintOnSave": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
