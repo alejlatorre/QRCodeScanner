@@ -18,7 +18,7 @@ fi
 # Check if QRCodeScanner has already been installed
 #-------------------------------------------------------------------------------
 echo '##########################################################'
-echo 'Have you already configured qr-code-scanner repository? (y or n)'
+echo 'Have you already configured QRCodeScanner repository? (y or n)'
 echo '##########################################################'
 read answer
 if [[ $answer =~ ^[Yy]$ ]]; then
@@ -36,7 +36,7 @@ else
     sudo apt-get install --no-install-recommends -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
     sudo apt-get install -y gcc make zlib1g-dev libreadline-dev libreadline8 sqlite3 libsqlite3-dev libbz2-dev python-tk python3-tk tk-dev
 
-    echo 'Installing asdf ...'
+    echo 'Installing asdf...'
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
     echo '. $HOME/.asdf/asdf.sh' >>~/.bashrc
     echo '. $HOME/.asdf/completions/asdf.bash' >>~/.bashrc
@@ -44,26 +44,26 @@ else
     sleep 5
     source ~/.bashrc
 
-    echo 'Installing Python ...'
+    echo 'Installing Python...'
     asdf plugin-add python
     asdf install python 3.9.9
     asdf global python 3.9.9
 
-    echo 'Installing Poetry ...'
+    echo 'Installing Poetry...'
     asdf plugin-add poetry https://github.com/asdf-community/asdf-poetry.git
     asdf install poetry 1.2.1
     echo 'export PATH="$HOME/.poetry/bin:$PATH"' >>~/.bashrc
 
-    echo 'Cloning the project data-science ...'
+    echo 'Cloning the project QRCodeScanner...'
     cd ~/
     mkdir truora
     cd truora
-    git clone git@github.com:alejlatorre/qr-code-scanner.git
-    cd qr-code-scanner/
+    git clone git@github.com:alejlatorre/QRCodeScanner.git
+    cd QRCodeScanner/
 fi
 
 echo 'Installing dependencies...'
-cd ~/truora/qr-code-scanner
+cd ~/truora/QRCodeScanner
 poetry install
 poetry run pre-commit install
 
