@@ -48,5 +48,4 @@ class QRCodeScanner:
             cv2.imshow('QR codes detection', img_resized)
             cv2.waitKey()
             cv2.destroyWindow(winname='QR codes detection')
-
         return decoded_list

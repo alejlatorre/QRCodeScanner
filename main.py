@@ -1,31 +1,39 @@
-import os
-import tkinter as tk
-from tkinter import filedialog as fd
-from tkinter import ttk
-from tkinter.messagebox import showinfo
+"""
+Created on Sun Dec 25 15:59:18 2022
 
-from src.engine import QRCodeScanner
+@author: Alejandro Latorre Rojas
+"""
 
-root = tk.Tk()
-root.title('QR Code Scanner')
-root.resizable(False, False)
-root.geometry('300x80')
+import pickle
 
+import uvicorn
+from fastapi import FastAPI
 
-def select_file():
-    filetypes = (('PNG files', '*.png'), ('JPG files', '*.jpg'))
-    filename = fd.askopenfilename(
-        title='Select a QR Code', initialdir=os.getcwd(), filetypes=filetypes
-    )
-    qrcs = QRCodeScanner(show_images=False)
-    image = qrcs.read_image(filename=filename)
-    codes = qrcs.extract_info(img=image)
-    for code in codes:
-        print(code)
-    exit()
+app = FastAPI()
+
+OUTPUT_PATH = 'outputs/'
+PKL_FILENAME = 'qr_code_scanner_v1.pkl'
+qrcs = pickle.load(open(OUTPUT_PATH + PKL_FILENAME, 'rb'))
+
+# Index route, opens automatically on https://127.0.0.1:8000
+@app.get('/')
+async def root():
+    return {'message': 'Hello World'}
 
 
-open_button = ttk.Button(root, text='Select a QR Code', command=select_file)
-open_button.pack(expand=True)
+# Expose the qr code extractor
+@app.post('/qr_extraction')
+def qr_extraction(filename):
+    print(f'Filename: {filename}')
+    image = qrcs.read_image(filename)
+    qr_text = qrcs.extract_info(img=image)
+    print(f'Text: {qr_text}')
+    return {'text': qr_text}
 
-root.mainloop()
+
+# Run the API with uvicorn
+if __name__ == '__main__':
+    uvicorn.run(app, host='127.0.0.1', port=8000)
+
+# uvicorn main:app --reload
+# sudo lsof -t -i tcp:8000 | xargs kill -9

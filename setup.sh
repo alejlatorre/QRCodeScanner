@@ -36,6 +36,7 @@ else
     sudo apt-get install --no-install-recommends -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
     sudo apt-get install -y gcc make zlib1g-dev libreadline-dev libreadline8 sqlite3 libsqlite3-dev libbz2-dev python-tk python3-tk tk-dev
     sudo apt-get install -y libzbar0
+    sudo apt-get install -y uvicorn
 
     echo 'Installing asdf...'
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
