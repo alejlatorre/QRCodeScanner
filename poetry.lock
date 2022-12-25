@@ -1073,6 +1073,17 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "pyzbar"
+version = "0.1.9"
+description = "Read one-dimensional barcodes and QR codes from Python 2 and 3."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+scripts = ["Pillow (>=3.2.0)"]
+
+[[package]]
 name = "pyzmq"
 version = "24.0.1"
 description = "Python bindings for 0MQ"
@@ -1311,6 +1322,14 @@ optional = ["python-socks", "wsaccel"]
 test = ["websockets"]
 
 [[package]]
+name = "zbar"
+version = "0.10"
+description = "read barcodes from images or video"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "zipp"
 version = "3.11.0"
 description = "Backport of pathlib-compatible object wrapper for zip files"
@@ -1325,7 +1344,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "83a8d4e20a5bd37ab3b00ebc2c8987fed5c2985643adc8de52095a082a2f3b8d"
+content-hash = "72f000cbe8da81df208f6dae0dbc42baa18cc05417711301504d317f36d482d8"
 
 [metadata.files]
 anyio = [
@@ -2008,6 +2027,11 @@ PyYAML = [
     {file = "PyYAML-6.0-cp39-cp39-win_amd64.whl", hash = "sha256:b3d267842bf12586ba6c734f89d1f5b871df0273157918b0ccefa29deb05c21c"},
     {file = "PyYAML-6.0.tar.gz", hash = "sha256:68fb519c14306fec9720a2a5b45bc9f0c8d1b9c72adf45c37baedfcd949c35a2"},
 ]
+pyzbar = [
+    {file = "pyzbar-0.1.9-py2.py3-none-any.whl", hash = "sha256:4559628b8192feb25766d954b36a3753baaf5c97c03135aec7e4a026036b475d"},
+    {file = "pyzbar-0.1.9-py2.py3-none-win32.whl", hash = "sha256:8f4c5264c9c7c6b9f20d01efc52a4eba1ded47d9ba857a94130afe33703eb518"},
+    {file = "pyzbar-0.1.9-py2.py3-none-win_amd64.whl", hash = "sha256:13e3ee5a2f3a545204a285f41814d5c0db571967e8d4af8699a03afc55182a9c"},
+]
 pyzmq = [
     {file = "pyzmq-24.0.1-cp310-cp310-macosx_10_15_universal2.whl", hash = "sha256:28b119ba97129d3001673a697b7cce47fe6de1f7255d104c2f01108a5179a066"},
     {file = "pyzmq-24.0.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:bcbebd369493d68162cddb74a9c1fcebd139dfbb7ddb23d8f8e43e6c87bac3a6"},
@@ -2176,6 +2200,11 @@ webencodings = [
 websocket-client = [
     {file = "websocket-client-1.4.2.tar.gz", hash = "sha256:d6e8f90ca8e2dd4e8027c4561adeb9456b54044312dba655e7cae652ceb9ae59"},
     {file = "websocket_client-1.4.2-py3-none-any.whl", hash = "sha256:d6b06432f184438d99ac1f456eaf22fe1ade524c3dd16e661142dc54e9cba574"},
+]
+zbar = [
+    {file = "zbar-0.10.tar.bz2", hash = "sha256:597dc972199341426d74e9edc42dbde76c6ee6a884ec2039a81d266300a6d46b"},
+    {file = "zbar-0.10.tar.gz", hash = "sha256:5d0dad77dbca8822a4689c546f598f28030321efb14fa36ac5e409d181a0d9dd"},
+    {file = "zbar-0.10.zip", hash = "sha256:d8ceacef814dae535f7e9d62ae088b8868100dd41a332b7e7985f50da8ebb276"},
 ]
 zipp = [
     {file = "zipp-3.11.0-py3-none-any.whl", hash = "sha256:83a28fcb75844b5c0cdaf5aa4003c2d728c77e05f5aeabe8e95e56727005fbaa"},

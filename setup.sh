@@ -35,6 +35,7 @@ else
     sudo apt-get update
     sudo apt-get install --no-install-recommends -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
     sudo apt-get install -y gcc make zlib1g-dev libreadline-dev libreadline8 sqlite3 libsqlite3-dev libbz2-dev python-tk python3-tk tk-dev
+    sudo apt-get install -y libzbar0
 
     echo 'Installing asdf...'
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
@@ -76,7 +77,6 @@ if [[ $answer =~ ^[Yy]$ ]]; then
     echo 'Dynamically exporting the DISPLAY enviroment variable in WSL2...'
     echo "export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0" >>~/.bashrc
     echo 'export QT_DEBUG_PLUGINS=1' >>~/.bashrc
-    echo 'echo $DISPLAY'
 else
     echo 'Please install VcXsrv with the following instructions: PATH TO README.md'
 fi

@@ -3,43 +3,61 @@ import cv2
 import matplotlib
 
 matplotlib.use(arg='TkAgg', warn=False, force=True)
-# import numpy as np
+import numpy as np
+from pyzbar.pyzbar import decode
 
 # %% 1. Config
 DATA_PATH = 'data/'
-OUTPUT_PATH = 'output/'
+OUTPUT_PATH = 'outputs/'
 
 # %% 2. Load image, convert to grayscale and Otsu's threshold
-FILENAME = 'istockphoto-1095468748-612x612.jpg'
+# FILENAME = 'istockphoto-1095468748-612x612.jpg'
+# FILENAME = 'qrcode_rotated.jpg'
+# FILENAME = 'qrcode_rotated_with_background.png'
+FILENAME = 'qrcode_sproutqr.jpg'
+# FILENAME = 'multi_qrcodes.png'
 img = cv2.imread(DATA_PATH + FILENAME)
-gray_img = 255 - cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-cv2.imshow('Image', gray_img)
+dim = img.shape
+bi_dim = (dim[1], dim[0])
+cv2.imshow('Default', img)
+
+decoded_list = []
+for d in decode(img):
+    img = cv2.rectangle(
+        img,
+        (d.rect.left, d.rect.top),
+        (d.rect.left + d.rect.width, d.rect.top + d.rect.height),
+        (255, 0, 0),
+        2,
+    )
+    img = cv2.polylines(img, [np.array(d.polygon)], True, (0, 255, 0), 2)
+    img = cv2.putText(
+        img,
+        d.data.decode(),
+        (d.rect.left, d.rect.top + d.rect.height),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        0.6,
+        (0, 0, 255),
+        1,
+        cv2.LINE_AA,
+    )
+    decoded_list.append(d.data.decode())
+
+img_resized = cv2.resize(src=img, dsize=bi_dim)
+cv2.imshow('Detection', img)
 cv2.waitKey()
-cv2.destroyAllWindows()
+cv2.destroyWindow()
 
+for i, val in enumerate(iterable=text_list):
+    print('######################################')
+    print(f'N{i}: {val}')
+    print('######################################')
 
-# NOW = datetime.now().strftime('%Y%m%d%H%m%s')
-# FILENAME = f'test_{NOW}.png'
-
-
-# thresh = cv2.threshold(gray_img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
-
-# # %% 3. Compute rotated bounding box
-# coordinates = np.column_stack(np.where(thresh > 0))
-# angle = cv2.minAreaRect(coordinates)[-1]
-
-# angle = -(90 + angle) if angle < -45 else -angle
-# print(f'Skew angle: {angle}')
-
-# # %% 4. Rotate image to deskew
-# (h, w) = img.shape[:2]
-# center = (w // 2, h // 2)
-# rotation_matrix = cv2.getRotationMatrix2D(center, angle, 1.0)
-# rotated = cv2.warpAffine(
-#     img, rotation_matrix, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE
-# )
-
-# cv2.imshow('Rotated', rotated)
-# cv2.waitKey()
+# FILENAME = 'qrcode_sproutqr_opencv.jpg'
+# cv2.imwrite(OUTPUT_PATH + FILENAME, img)
+# cv2.imread()
+# cv2.imshow('Detection', img)
+# cv2.waitKey(0)
+# cv2.destroyWindow(winname='Detection')
 
 # %%
