@@ -6,7 +6,6 @@ from flask import Flask, flash, redirect, render_template, request, url_for
 from werkzeug.utils import secure_filename
 
 from application import app
-from application.forms import QRCodeData
 from src.engine import QRCodeScanner
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
