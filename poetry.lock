@@ -321,22 +321,6 @@ python-versions = "*"
 Flask = "*"
 
 [[package]]
-name = "Flask-WTF"
-version = "1.0.1"
-description = "Form rendering, validation, and CSRF protection for Flask with WTForms."
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[package.dependencies]
-Flask = "*"
-itsdangerous = "*"
-WTForms = "*"
-
-[package.extras]
-email = ["email-validator"]
-
-[[package]]
 name = "fqdn"
 version = "1.5.1"
 description = "Validates fully-qualified domain names against RFC 1123, so that they are acceptable to modern bowsers"
@@ -1398,20 +1382,6 @@ MarkupSafe = ">=2.1.1"
 watchdog = ["watchdog"]
 
 [[package]]
-name = "WTForms"
-version = "3.0.1"
-description = "Form validation and rendering for Python web development."
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-MarkupSafe = "*"
-
-[package.extras]
-email = ["email-validator"]
-
-[[package]]
 name = "zipp"
 version = "3.11.0"
 description = "Backport of pathlib-compatible object wrapper for zip files"
@@ -1426,7 +1396,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "a8d083d9035719ec4841d2d9a0fd4144c2e12596a45724978abdc87713edbeae"
+content-hash = "17a80bc1f08479f3ae4b4c6e316ab4e6c927c8513834982ec6aeec568352a454"
 
 [metadata.files]
 anyio = [
@@ -1643,10 +1613,6 @@ Flask = [
 Flask-Dropzone = [
     {file = "Flask-Dropzone-1.6.0.tar.gz", hash = "sha256:9557ce16b07a5c0f4c334c0c9713ca1f0672e55c64aefe6bc055c5e2e391177c"},
     {file = "Flask_Dropzone-1.6.0-py2.py3-none-any.whl", hash = "sha256:41242ea2bcdb6059dc56bbaefbbf4a3d5e49e2fa10ea3766cb42f67f671af75b"},
-]
-Flask-WTF = [
-    {file = "Flask-WTF-1.0.1.tar.gz", hash = "sha256:34fe5c6fee0f69b50e30f81a3b7ea16aa1492a771fe9ad0974d164610c09a6c9"},
-    {file = "Flask_WTF-1.0.1-py3-none-any.whl", hash = "sha256:9d733658c80be551ce7d5bc13c7a7ac0d80df509be1e23827c847d9520f4359a"},
 ]
 fqdn = [
     {file = "fqdn-1.5.1-py3-none-any.whl", hash = "sha256:3a179af3761e4df6eb2e026ff9e1a3033d3587bf980a0b1b2e1e5d08d7358014"},
@@ -2306,10 +2272,6 @@ websocket-client = [
 Werkzeug = [
     {file = "Werkzeug-2.2.2-py3-none-any.whl", hash = "sha256:f979ab81f58d7318e064e99c4506445d60135ac5cd2e177a2de0089bfd4c9bd5"},
     {file = "Werkzeug-2.2.2.tar.gz", hash = "sha256:7ea2d48322cc7c0f8b3a215ed73eabd7b5d75d0b50e31ab006286ccff9e00b8f"},
-]
-WTForms = [
-    {file = "WTForms-3.0.1-py3-none-any.whl", hash = "sha256:837f2f0e0ca79481b92884962b914eba4e72b7a2daaf1f939c890ed0124b834b"},
-    {file = "WTForms-3.0.1.tar.gz", hash = "sha256:6b351bbb12dd58af57ffef05bc78425d08d1914e0fd68ee14143b7ade023c5bc"},
 ]
 zipp = [
     {file = "zipp-3.11.0-py3-none-any.whl", hash = "sha256:83a28fcb75844b5c0cdaf5aa4003c2d728c77e05f5aeabe8e95e56727005fbaa"},

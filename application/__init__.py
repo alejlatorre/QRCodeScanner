@@ -7,6 +7,7 @@ app = Flask(__name__)
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 app.config['SECRET_KEY'] = '96c2cfcd56e6532d791efe16d6577965d2a39fdc'
-app.config.update(UPLOAD_PATH=os.path.join(dir_path, 'static'))
+app.config['UPLOAD_FOLDER'] = os.path.join(dir_path, 'static')
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 from application import routes

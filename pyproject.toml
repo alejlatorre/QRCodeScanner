@@ -18,7 +18,6 @@ pyzbar = "^0.1.9"
 tk = "^0.1.0"
 Flask = "^2.2.2"
 Flask-Dropzone = "^1.6.0"
-Flask-WTF = "^1.0.1"
 
 [tool.black]
 line-length = 88
