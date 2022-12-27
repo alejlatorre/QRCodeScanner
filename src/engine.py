@@ -43,11 +43,10 @@ class QRCodeScanner:
                     1,
                     cv2.LINE_AA,
                 )
+                if save_img:
+                    if filepath:
+                        cv2.imwrite(filename=filepath, img=img)
             decoded_list.append(d.data.decode())
-
-            # if save_img:
-            #     if filepath:
-            #         cv2.imwrite(filename=filepath, img=img)
 
             if self.show_images:
                 img_resized = cv2.resize(src=img, dsize=self.bi_dim)

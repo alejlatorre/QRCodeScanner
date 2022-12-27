@@ -1,6 +1,6 @@
 <h1 aling="center"> QR Code Scanner </h1>
 
-This repository contains an API which extracts QR codes from images and scans the content. Also have the web app local version.
+This repository contains a Web App and an API which extract QR codes from images and scans the content.
 
 **PLEASE: read everything**
 
@@ -12,6 +12,7 @@ This repository contains an API which extracts QR codes from images and scans th
   - [Test in FastAPI UI](#test-in-fastapi-ui)
   - [Test with a python script in WSL CLI](#test-with-a-python-script-in-wsl-cli)
   - [Test with a cURL script in WSL CLI](#test-with-a-curl-script-in-wsl-cli)
+- [Reasoning behind](#reasoning-behind)
 
 --
 
@@ -131,3 +132,21 @@ curl -X 'POST' 'http://127.0.0.1:8000/get_text' -H 'accept: application/json' -H
 ```
 
 ![api_call_gui_example](./.github/assets/api_call_cli_curl_example.png)
+
+## Reasoning behind
+
+First, we use a customized module called `engine` where is a class called `QRCodeScanner`.
+
+This class have two methods:
+
+1. **read_image**: It is used to read files with cv2 library when data is stored locally.
+2. **extract_info**: It is used to extract three elements from decoded image (rectangle, polygons and text decoded)
+   - Rectangle: Detects the perimeter where the QR code is in 2D
+   - Polygons: Detects the shape of the QR code regardless of the rotation angle
+   - Text: Extracts the decoded text from the QR code
+
+**Note**: The `extract_info` returns a list of strings, so if we have an image with multiple QR codes, it will returns a list of decoded texts.
+
+In the Web App version, we use Flask and POST method to send an input file through a form element. Then it validates allowed extensions (jpg, jpeg and png) and save the image in `application/static/` folder in order to use it with `QRCodeScanner` class. Finally, the extracted text is iteratively shown through flask messages (with flash method) because we can have a list of decoded texts.
+
+In the API version, we use FastAPI to create an app that contains a POST request url called `http://127.0.0.1:8000/get_text` and basically uploads a file that is open with Pillow and then the QRCodeScanner class is used to extract the list of decoded texts.
