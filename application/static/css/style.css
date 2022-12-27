@@ -1,0 +1,15 @@
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}

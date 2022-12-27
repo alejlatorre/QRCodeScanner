@@ -20,7 +20,7 @@ class QRCodeScanner:
             cv2.destroyWindow(winname='Default image')
         return image
 
-    def extract_info(self, img):
+    def extract_info(self, img, save_img=False, filepath=None):
         decoded_list = []
         for d in decode(img):
             img = cv2.rectangle(
@@ -42,6 +42,10 @@ class QRCodeScanner:
                 cv2.LINE_AA,
             )
             decoded_list.append(d.data.decode())
+
+        if save_img:
+            if filepath:
+                cv2.imwrite(filename=filepath, img=img)
 
         if self.show_images:
             img_resized = cv2.resize(src=img, dsize=self.bi_dim)

@@ -1,7 +1,0 @@
-{% extends "layout.html" %}
-{% block content %}
-<div class="margin: 3% auto 3% auto; border: 3px solid orange;">
-    <img style="margin: auto;" src="{{ url_for('static', filename=image) }}" alt="QRcode image">
-</div>
-<a href="{{ url_for('static', filename=image) }}" class="btn btn-primary">Download image</a>
-{% endblock %}
