@@ -116,23 +116,31 @@ uvicorn api:app --reload
 
 ### Test with a python script in WSL CLI
 
+- With the program running, you need to open a new tab in Windows terminal
+  ![api_call_new_tab](./.github/assets/api_call_new_tab.png)
 - Run `api_request_example.py` script with an image stored in `data/` folder
 
-```
-poetry run python api_request_example.py 'qrcode_sproutqr.jpg'
-```
+  ```
+  cd ~/truora/QRCodeScanner
+  source .venv/bin/activate
+  poetry run python api_request_example.py 'qrcode_sproutqr.jpg'
+  ```
 
-![api_call_gui_example](./.github/assets/api_call_cli_py_example.png)
+  ![api_call_gui_example](./.github/assets/api_call_cli_py_example.png)
 
 ### Test with a cURL script in WSL CLI
 
+- With the program running, you need to open a new tab in Windows terminal
+  ![api_call_new_tab](./.github/assets/api_call_new_tab.png)
 - Run the script with an image stored in `data/` folder
 
-```
-curl -X 'POST' 'http://127.0.0.1:8000/get_text' -H 'accept: application/json' -H 'Content-Type: multipart/form-data' -F 'img=@data/qrcode_sproutqr.jpg;type=image/jpeg'
-```
+  ```
+  cd ~/truora/QRCodeScanner
+  source .venv/bin/activate
+  curl -X 'POST' 'http://127.0.0.1:8000/get_text' -H 'accept: application/json' -H 'Content-Type: multipart/form-data' -F 'img=@data/qrcode_sproutqr.jpg;type=image/jpeg'
+  ```
 
-![api_call_gui_example](./.github/assets/api_call_cli_curl_example.png)
+  ![api_call_gui_example](./.github/assets/api_call_cli_curl_example.png)
 
 ## Reasoning behind
 
