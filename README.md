@@ -42,6 +42,7 @@ git clone git@github.com:alejlatorre/QRCodeScanner.git
 - Inside the `scripts` folder run the config file
 
 ```
+cd QRCodeScanner/
 cd scripts/
 chmod +x setup.sh
 bash setup.sh
