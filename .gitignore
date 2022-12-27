@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 # Random stuff
-__main.py
+_desktop_app.py
 application/static/*.png
 application/static/*.jpg
 application/static/*.jpeg

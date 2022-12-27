@@ -20,36 +20,39 @@ class QRCodeScanner:
             cv2.destroyWindow(winname='Default image')
         return image
 
-    def extract_info(self, img, save_img=False, filepath=None):
+    def extract_info(self, img, save_img=False, filepath=None, decode_image=False):
         decoded_list = []
+
         for d in decode(img):
-            img = cv2.rectangle(
-                img,
-                (d.rect.left, d.rect.top),
-                (d.rect.left + d.rect.width, d.rect.top + d.rect.height),
-                (255, 0, 0),
-                2,
-            )
-            img = cv2.polylines(img, [np.array(d.polygon)], True, (0, 255, 0), 2)
-            img = cv2.putText(
-                img,
-                d.data.decode(),
-                (d.rect.left, d.rect.top + d.rect.height),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.6,
-                (0, 0, 255),
-                1,
-                cv2.LINE_AA,
-            )
+            if not decode_image:
+                img = cv2.rectangle(
+                    img,
+                    (d.rect.left, d.rect.top),
+                    (d.rect.left + d.rect.width, d.rect.top + d.rect.height),
+                    (255, 0, 0),
+                    2,
+                )
+                img = cv2.polylines(img, [np.array(d.polygon)], True, (0, 255, 0), 2)
+                img = cv2.putText(
+                    img,
+                    d.data.decode(),
+                    (d.rect.left, d.rect.top + d.rect.height),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.6,
+                    (0, 0, 255),
+                    1,
+                    cv2.LINE_AA,
+                )
             decoded_list.append(d.data.decode())
 
-        if save_img:
-            if filepath:
-                cv2.imwrite(filename=filepath, img=img)
+            # if save_img:
+            #     if filepath:
+            #         cv2.imwrite(filename=filepath, img=img)
 
-        if self.show_images:
-            img_resized = cv2.resize(src=img, dsize=self.bi_dim)
-            cv2.imshow('QR codes detection', img_resized)
-            cv2.waitKey()
-            cv2.destroyWindow(winname='QR codes detection')
+            if self.show_images:
+                img_resized = cv2.resize(src=img, dsize=self.bi_dim)
+                cv2.imshow('QR codes detection', img_resized)
+                cv2.waitKey()
+                cv2.destroyWindow(winname='QR codes detection')
+
         return decoded_list
