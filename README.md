@@ -84,7 +84,7 @@ poetry run python web_app.py
   - Click on **submit**
     ![web_app_submit](./.github/assets/web_app_submit.png)
   - The input/output images and the extracted text will be shown
-  - Test with more files. It also manage rotated QRs and images with multiple QR codes
+  - Test with more files. It also manages rotated QRs and images with multiple QR codes
 
 ## API call
 
